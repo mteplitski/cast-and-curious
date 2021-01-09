@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
-import { useHistory, BrowserRouter, Link } from "react-router-dom";
+import { Button, Menu, MenuItem } from "@material-ui/core"
+import { Link } from "react-router-dom";
 import { default as Logo } from "../assets/cac.png";
 
 const Container = styled.div`
@@ -22,29 +21,38 @@ const Image = styled.img`
 `
 
 const Header = () => {
-  const history = useHistory();
+  const [menuEl, setMenuEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setMenuEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setMenuEl(null);
+  };
 
   return(
     <Container>
       <Image src={Logo} alt="Cast and Curious"/>
       <div>
-        <DropdownButton title="Explore Recommended" variant="flat">
-          <Dropdown.Item as="button">
-            <Link to={"/topTrends"}>
-              Top Trends
-            </Link>
-          </Dropdown.Item>
-          <Dropdown.Item as="button">
-            <Link to={"/myTopics"}>
-              My Topics
-            </Link>
-          </Dropdown.Item>
-          <Dropdown.Item as="button">
-            <Link to={"/customCast"}>
-              Custom Cast
-            </Link>
-          </Dropdown.Item>
-        </DropdownButton>
+        <Button color="primary" variant="contained" aria-controls="header-menu" aria-haspopup="true" onClick={handleClick}>Explore Recommended</Button>
+        <Menu
+          id="header-menu"
+          anchorEl={menuEl}
+          keepMounted
+          open={Boolean(menuEl)}
+          onClose={handleClose}
+        >
+          <Link to={"/topTrends"}>
+            <MenuItem>Top Trends</MenuItem>
+          </Link>
+          <Link to={"/myTopics"}>
+            <MenuItem>My Topics</MenuItem>
+          </Link>
+          <Link to={"/customCast"}>
+            <MenuItem>Custom Cast</MenuItem>
+          </Link>
+        </Menu>
       </div>
     </Container>
   );

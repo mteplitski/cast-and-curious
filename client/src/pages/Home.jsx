@@ -1,4 +1,5 @@
 import React from "react";
+import EpisodeCard from "../components/EpisodeCard";
 
 const Home = () => {
 	// const token_info = window.location.href.split('access_token=')[1]; // token info from URL params
@@ -6,8 +7,9 @@ const Home = () => {
 	// console.log(token);
 
     return (
-    	<div>
-        	<h1>Home</h1>
+			<div>
+				<h1>Home</h1>
+				<EpisodeCard/>
 			</div>
     )
 }
