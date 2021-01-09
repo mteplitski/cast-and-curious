@@ -1,10 +1,11 @@
 import './App.css';
 import Header from './pages/Header';
 import Home from './pages/Home';
-import LoggedOut from './pages/LoggedOut';
+// import LoggedOut from './pages/LoggedOut';
 import TopTrends from './pages/TopTrends';
 import MyTopics from './pages/MyTopics';
-import CustomCast from './pages/CustomCast'
+import CustomCast from './pages/CustomCast';
+import Episode from './pages/Episode';
 import {
   BrowserRouter,
   Switch,
@@ -18,9 +19,9 @@ function App() {
       <BrowserRouter>
         <Header/>
         <Switch>
-          <Route path="/home">
+          {/* <Route path="/home">
             <Home />
-          </Route>
+          </Route> */}
           <Route path="/topTrends">
             <TopTrends />
           </Route>
@@ -30,8 +31,11 @@ function App() {
           <Route path="/customCast">
             <CustomCast />
           </Route>
+          <Route path="/episode/:id">
+            <Episode />
+          </Route>
           <Route path="/">
-            <LoggedOut />
+            <Home />
           </Route>
         </Switch>
       </BrowserRouter>

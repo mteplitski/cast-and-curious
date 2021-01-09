@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited .btn-flat {
+  background-color: #FC9FFC !important;
+  outline: none;
+  border: none !important;
+}
+
+.dropdown-menu {
+  border: none !important;
+}
