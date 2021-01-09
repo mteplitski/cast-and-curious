@@ -17,7 +17,7 @@ class Episode(models.Model):
     description = models.CharField(max_length=2048, blank=True)
     spotify_url = models.URLField(blank=True)
     release_date = models.DateTimeField(blank=True, null=True)
-    duration_ms = models.IntegerField(blank=True, null=True)
+    duration_ms = models.PositiveIntegerField(blank=True, null=True)
     show = models.ForeignKey(
         'podcasts.Show',
         on_delete=models.PROTECT,

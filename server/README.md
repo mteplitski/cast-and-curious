@@ -10,7 +10,26 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-### Running the podcasts app
+### Database setup
+
+```
+psql
+create database "cast_and_curious";
+\q
+```
+
+### Environment file config
+
+Duplicate `sample.env` and rename it to `.env`, then add the following:
+
+```
+DJANGO_SK=[ask for this one]
+DB_NAME='cast_and_curious'
+DB_USER=[your postgresql user]
+DB_PASSWORD=[your postgresql password]
+```
+
+### Running the app
 
 ```
 python3 manage.py migrate
