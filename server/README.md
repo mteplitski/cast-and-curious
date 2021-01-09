@@ -60,3 +60,80 @@ python3 manage.py migrate [app name]
 ```
 flake8
 ```
+
+## Deploy
+
+```
+cd ..
+git subtree push --prefix server heroku main
+```
+
+## API documentation
+
+### Episodes
+
+#### GET /api/episodes
+Returns all episodes in the following form:
+
+```json
+[
+    {
+        "id": 1,
+        "name": "Episode 1: Bananas",
+        "description": "Bananas, potatoes, and tomatoes",
+        "spotify_url": "https://open.spotify.com/track/4t9cpYT8AD3G2TGwSRQVDK?si=O6PMpFCSQ7y10gqhkPH1ow",
+        "release_date": "2021-01-09T08:09:55Z",
+        "duration_ms": 60000,
+        "show": {
+            "name": "Minion Madness",
+            "publisher": "Brittany",
+            "image_url": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png"
+        },
+        "topics": [
+            "sustainability",
+            "entertainment",
+            "worker's rights"
+        ],
+        "reviews": [
+            {
+                "user": "milo",
+                "rating": 5,
+                "comment": "woof",
+                "created_at": "2021-01-09T21:32:19.378593Z"
+            }
+        ]
+    }
+]
+```
+
+#### GET /api/episodes/:id
+Returns an episode's details in the following form:
+
+```json
+{
+    "id": 1,
+    "name": "Episode 1: Bananas",
+    "description": "Bananas, potatoes, and tomatoes",
+    "spotify_url": "https://open.spotify.com/track/4t9cpYT8AD3G2TGwSRQVDK?si=O6PMpFCSQ7y10gqhkPH1ow",
+    "release_date": "2021-01-09T08:09:55Z",
+    "duration_ms": 60000,
+    "show": {
+        "name": "Minion Madness",
+        "publisher": "Brittany",
+        "image_url": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png"
+    },
+    "topics": [
+        "sustainability",
+        "entertainment",
+        "worker's rights"
+    ],
+    "reviews": [
+        {
+            "user": "milo",
+            "rating": 5,
+            "comment": "woof",
+            "created_at": "2021-01-09T21:32:19.378593Z"
+        }
+    ]
+}
+```
