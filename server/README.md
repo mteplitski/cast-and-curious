@@ -114,9 +114,40 @@ Returns an episode's details in the following form:
 
 ### Topics
 
-#### GET /api/trending/topics
+#### GET /api/topics/trending
 
 Returns the currently trending topics, and some related episodes. Any topics with fewer than 2 related episodes are filtered out.
+
+```json
+[
+    {
+        "name": "sustainability",
+        "colour": "primary",
+        "episodes": [
+            {
+                "id": 1,
+                "name": "Bananas",
+                "description": "",
+                "release_date": null,
+                "duration_ms": null,
+                "show": {
+                    "name": "Minions",
+                    "publisher": "Bob",
+                    "image_url": ""
+                }
+            }
+        ]
+    },
+    {
+        "name": "civil rights",
+        "episodes": []
+    }
+]
+```
+
+#### GET /api/topics/favourites
+
+Returns the user's favourited topics, and some related episodes. Any topics with fewer than 2 related episodes are filtered out.
 
 ```json
 [

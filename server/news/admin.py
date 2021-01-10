@@ -19,14 +19,6 @@ class TrendAdmin(admin.ModelAdmin):
     search_fields = ('title', )
 
 
-class ArticleAdmin(admin.ModelAdmin):
-    readonly_fields = ('id', )
-
-
-class TrendAdmin(admin.ModelAdmin):
-    readonly_fields = ('id',)
-
-
 admin.site.register(Topic, TopicAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Trend, TrendAdmin)

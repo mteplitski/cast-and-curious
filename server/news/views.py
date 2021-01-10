@@ -4,7 +4,6 @@ from .serializers import TopicSerializer
 from .services import get_trending_topics
 
 
-# Trend detail page
 class TrendingTopicsViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     serializer_class = TopicSerializer
     http_method_names = ['get']

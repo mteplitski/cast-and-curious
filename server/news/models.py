@@ -7,6 +7,7 @@ class Topic(models.Model):
     type = models.CharField(max_length=20, blank=True)
     created_at = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
+    # One of 'primary', 'secondary' or 'error'
     colour = models.CharField(max_length=20, blank=True)
 
     def __str__(self):
@@ -18,7 +19,7 @@ class Article(models.Model):
     url = models.URLField(blank=True)
     title = models.CharField(max_length=200)
     abstract = models.TextField(max_length=2048, blank=True)
-    topics = models.ManyToManyField(Topic, blank=True)  # des_facet
+    topics = models.ManyToManyField(Topic, blank=True)
     created_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
