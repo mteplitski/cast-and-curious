@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Typography, TextField } from "@material-ui/core";
+import { Typography, TextField, Paper } from "@material-ui/core";
 import styled from "styled-components";
 import Spacer from "../components/Spacer";
 
@@ -7,9 +7,9 @@ const Container = styled.div`
   padding: 24px;
 `
 
-const InputContainer = styled.div`
+const InputContainer = styled(Paper)`
   width: 70%;
-  border: 1px solid black;
+  // border: 1px solid black;
   display: block;
   margin: auto;
   padding: 24px;
@@ -47,7 +47,7 @@ const CustomCast = () => {
           <>
             <Typography variant="p">Search for podcast deep dives based on articles of interest. </Typography>
             <Spacer height={12}/>
-            <InputContainer>
+            <InputContainer elevation={4}>
               <TextField
                 label="Article URL"
                 variant="outlined"
@@ -59,7 +59,7 @@ const CustomCast = () => {
               <Typography variant="p">OR</Typography>
               <Spacer height={12}/>
               <FileUploadMock>
-              <Typography variant="p">Upload a file from your computer.</Typography>
+                <Typography variant="p">Upload a file from your computer.</Typography>
               </FileUploadMock>
             </InputContainer>
           </>

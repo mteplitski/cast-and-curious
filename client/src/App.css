@@ -37,12 +37,15 @@
   }
 }
 
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited .btn-flat {
-  background-color: #FC9FFC !important;
-  outline: none;
-  border: none !important;
+.MuiButton-label {
+  color: white;
 }
 
-.dropdown-menu {
-  border: none !important;
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.MuiCardContent-root:last-child {
+  padding-bottom: 8px !important;
 }

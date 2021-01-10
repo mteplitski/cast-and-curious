@@ -1,6 +1,17 @@
-import react from "react";
+import React from "react";
+import {
+	Typography,
+	Card,
+	CardMedia,
+	CardContent,
+} from "@material-ui/core";
 import styled from "styled-components";
-import { Typography, Card } from "@material-ui/core";
+import Spacer from "../components/Spacer";
+import { default as SpotifyLogo } from "../assets/spotify_logo.png";
+import StarRating from "../components/StarRating";
+import TopicChips from "../components/TopicChips";
+import { Link } from "react-router-dom";
+
 
 const MOCK_EPISODE = {
 	"id": 1,
@@ -13,39 +24,33 @@ const MOCK_EPISODE = {
 			"name": "Minion Madness",
 			"publisher": "Brittany",
 			"image_url": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png"
-	}
+	},
+	"topic": "civil rights"
 }
 
-const Container = styled.div`
-	padding: 24px;
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	border: 1px solid black;
-`
-
-const Image = styled.img`
-	width: 80px;
-	height: auto;
-`
-
-const EpisodeCard = () => {
+const EpisodeCard = ({ episode }) => {
 	const {
 		name,
 		description,
 		spotify_url,
 		release_date,
 		duration_ms,
-		show
-	} = MOCK_EPISODE;
+		show,
+		topic
+	} = episode;
+	console.log(episode);
 
 	return (
-		<Container>
-			<Image src={spotify_url}/>
-			<Card>
-				<Typography variant="h3">{name}</Typography>
-			</Card>
-		</Container>
+		<Card style={{padding: "8px", width: "250px", paddingBottom: "8px"}}>
+			<CardMedia image={show.image_url} style={{height: "80px", width: "auto"}}/>
+			<CardContent style={{textAlign: "left"}}>
+				<Link to="episode/1" style={{textAlign: "left"}}>
+					<Typography variant="body1"><b>{name}</b></Typography>
+				</Link>
+				<TopicChips topics={[topic]} align="left"/>
+				<Typography variant="body1">{description}</Typography>
+			</CardContent>
+		</Card>
 	)
 }
 

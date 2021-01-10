@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Button, Menu, MenuItem } from "@material-ui/core"
+import { Button, Menu, MenuItem, Paper } from "@material-ui/core"
 import { Link } from "react-router-dom";
 import { default as Logo } from "../assets/cac.png";
 
-const Container = styled.div`
+const Container = styled(Paper)`
   display: flex;
   position: sticky;
   top: 0;
   z-index: 10;
-  border-bottom: 1px solid black;
+  // border-bottom: 1px solid black;
   justify-content: space-between;
   height: 90px;
   align-items: center;
@@ -17,7 +17,7 @@ const Container = styled.div`
 `
 
 const Image = styled.img`
-  height: 100%;
+  height: 90px;
 `
 
 const Header = () => {
@@ -32,10 +32,20 @@ const Header = () => {
   };
 
   return(
-    <Container>
-      <Image src={Logo} alt="Cast and Curious"/>
+    <Container elevation={4}>
+      <Link to="/">
+        <Image src={Logo} alt="Cast and Curious"/>
+      </Link>
       <div>
-        <Button color="primary" variant="contained" aria-controls="header-menu" aria-haspopup="true" onClick={handleClick}>Explore Recommended</Button>
+        <Button
+          color="primary"
+          variant="contained"
+          aria-controls="header-menu"
+          aria-haspopup="true"
+          onClick={handleClick}
+        >
+          Explore
+        </Button>
         <Menu
           id="header-menu"
           anchorEl={menuEl}
@@ -43,9 +53,6 @@ const Header = () => {
           open={Boolean(menuEl)}
           onClose={handleClose}
         >
-          <Link to={"/topTrends"}>
-            <MenuItem>Top Trends</MenuItem>
-          </Link>
           <Link to={"/myTopics"}>
             <MenuItem>My Topics</MenuItem>
           </Link>
