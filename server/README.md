@@ -68,40 +68,43 @@ cd ..
 git subtree push --prefix server heroku main
 ```
 
+If Heroku gives you a merge conflict, try:
+
+```
+git push heroku `git subtree split --prefix server main`:main --force
+```
+
 ## API documentation
 
 ### Episodes
 
-#### GET /api/episodes
-Returns all episodes in the following form:
+#### GET /api/episodes/trending
+
+Gets some preview data of the episodes that relate closest to the latest trend:
 
 ```json
 [
     {
         "id": 1,
-        "name": "Episode 1: Bananas",
-        "description": "Bananas, potatoes, and tomatoes",
-        "spotify_url": "https://open.spotify.com/track/4t9cpYT8AD3G2TGwSRQVDK?si=O6PMpFCSQ7y10gqhkPH1ow",
-        "release_date": "2021-01-09T08:09:55Z",
-        "duration_ms": 60000,
+        "name": "Bananas",
+        "description": "",
         "show": {
-            "name": "Minion Madness",
-            "publisher": "Brittany",
-            "image_url": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png"
+            "name": "Minions",
+            "publisher": "Bob",
+            "image_url": ""
         },
-        "topics": [
-            "sustainability",
-            "entertainment",
-            "worker's rights"
-        ],
-        "reviews": [
-            {
-                "user": "milo",
-                "rating": 5,
-                "comment": "woof",
-                "created_at": "2021-01-09T21:32:19.378593Z"
-            }
-        ]
+        "topic": "sustainability"
+    },
+    {
+        "id": 2,
+        "name": "Donkeys?",
+        "description": "",
+        "show": {
+            "name": "Get In Me Swamp",
+            "publisher": "Shrek",
+            "image_url": ""
+        },
+        "topic": "civil rights"
     }
 ]
 ```
@@ -136,4 +139,36 @@ Returns an episode's details in the following form:
         }
     ]
 }
+```
+
+### Topics
+
+#### GET /api/trending/topics
+
+Returns the currently trending topics, and some related episodes:
+
+```json
+[
+    {
+        "name": "sustainability",
+        "episodes": [
+            {
+                "id": 1,
+                "name": "Bananas",
+                "description": "",
+                "release_date": null,
+                "duration_ms": null,
+                "show": {
+                    "name": "Minions",
+                    "publisher": "Bob",
+                    "image_url": ""
+                }
+            }
+        ]
+    },
+    {
+        "name": "civil rights",
+        "episodes": []
+    }
+]
 ```

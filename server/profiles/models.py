@@ -14,12 +14,12 @@ class UserProfile(models.Model):
     )
     topics = models.ManyToManyField(
         Topic,
-        related_name='users',
+        related_name='followed_by',
         blank=True,
     )
     listened_to = models.ManyToManyField(
         Episode,
-        related_name='users',
+        related_name='listened_by',
         blank=True,
     )
 

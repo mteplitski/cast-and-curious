@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import UserProfile, Review
+from .models import Review
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -12,4 +12,3 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     def get_user(self, obj):
         return obj.user.user.username
-
