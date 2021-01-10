@@ -1,5 +1,5 @@
 export const get = async (apiUrl) => {
-    const { REACT_APP_API_URL } = process.env;
+    const REACT_APP_API_URL = "http://cast-and-curious-api.herokuapp.com/api";
     const url = `${REACT_APP_API_URL}/${apiUrl}`;
     const res = await fetch(url);
     const data = await res.json();
