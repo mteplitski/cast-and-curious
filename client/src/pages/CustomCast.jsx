@@ -110,8 +110,7 @@ const CustomCast = () => {
             ))}
           </> :
           <>
-            <Typography variant="p">Cast your net and fish for content based on articles of your choice.  </Typography><br></br>
-            <Typography variant="p">Search for podcast deep dives based on articles of interest. </Typography>
+            <Typography variant="p">Fish for for podcast deep dives based on articles of interest. </Typography>
             <Spacer height={40}/>
             <InputContainer elevation={4}>
               <TextField
