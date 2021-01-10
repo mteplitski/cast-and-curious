@@ -3,10 +3,14 @@ from .models import Show, Episode
 
 
 class ShowAdmin(admin.ModelAdmin):
+    search_fields = ('name', 'publisher', )
+    list_display = ('name', 'publisher', )
     readonly_fields = ('id',)
 
 
 class EpisodeAdmin(admin.ModelAdmin):
+    search_fields = ('name', 'show', )
+    list_display = ('name', 'show', 'active', )
     readonly_fields = ('id',)
 
 

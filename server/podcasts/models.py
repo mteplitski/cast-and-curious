@@ -7,6 +7,7 @@ class Show(models.Model):
     name = models.CharField(max_length=512)
     publisher = models.CharField(max_length=200)
     image_url = models.URLField(blank=True)
+    created_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
@@ -14,9 +15,9 @@ class Show(models.Model):
 
 class Episode(models.Model):
     name = models.CharField(max_length=512)
-    description = models.CharField(max_length=2048, blank=True)
+    description = models.TextField(max_length=4096, blank=True)
     spotify_url = models.URLField(blank=True)
-    release_date = models.DateTimeField(blank=True, null=True)
+    release_date = models.CharField(max_length=50, blank=True, null=True)
     duration_ms = models.PositiveIntegerField(blank=True, null=True)
     show = models.ForeignKey(
         Show,
@@ -28,6 +29,8 @@ class Episode(models.Model):
         related_name='episodes',
         blank=True,
     )
+    created_at = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name

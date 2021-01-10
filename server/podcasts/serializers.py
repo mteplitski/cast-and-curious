@@ -25,7 +25,7 @@ class EpisodeListSerializer(serializers.ModelSerializer):
         ]
 
 
-class EpisodeDetailSerializer(serializers.ModelSerializer):
+class EpisodeSerializer(serializers.ModelSerializer):
     show = ShowSerializer()
     topics = serializers.SerializerMethodField()
     reviews = ReviewSerializer(many=True)

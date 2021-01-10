@@ -76,38 +76,9 @@ git push heroku `git subtree split --prefix server main`:main --force
 
 ## API documentation
 
+## API documentation
+
 ### Episodes
-
-#### GET /api/episodes/trending
-
-Gets some preview data of the episodes that relate closest to the latest trend:
-
-```json
-[
-    {
-        "id": 1,
-        "name": "Bananas",
-        "description": "",
-        "show": {
-            "name": "Minions",
-            "publisher": "Bob",
-            "image_url": ""
-        },
-        "topic": "sustainability"
-    },
-    {
-        "id": 2,
-        "name": "Donkeys?",
-        "description": "",
-        "show": {
-            "name": "Get In Me Swamp",
-            "publisher": "Shrek",
-            "image_url": ""
-        },
-        "topic": "civil rights"
-    }
-]
-```
 
 #### GET /api/episodes/:id
 Returns an episode's details in the following form:
@@ -145,12 +116,13 @@ Returns an episode's details in the following form:
 
 #### GET /api/trending/topics
 
-Returns the currently trending topics, and some related episodes:
+Returns the currently trending topics, and some related episodes. Any topics with fewer than 2 related episodes are filtered out.
 
 ```json
 [
     {
         "name": "sustainability",
+        "colour": "primary",
         "episodes": [
             {
                 "id": 1,
