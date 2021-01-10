@@ -111,13 +111,13 @@ const Home = () => {
 		const data = await get("topics/favourites");
 		const trendingFavouriteEpisodes = getTrendingTopicEpisodes(data);
 		setTrendingEpisodes(trendingFavouriteEpisodes);
-	}
+	};
 
 	const fetchTrendingTopics = async () => {
 		const data = await get("topics/trending");
 		const trendingTopicEpisodes = getTrendingTopicEpisodes(data);
 		setTrendingTopics(trendingTopicEpisodes);
-	}
+	};
 
 	useEffect(() => {
 		fetchTrendingEpisodes();

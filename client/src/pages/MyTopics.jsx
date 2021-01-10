@@ -124,11 +124,11 @@ const MyTopics = () => {;
 		console.log(data);
 		const midpoint = Math.ceil(topics.length / 2);
 		setMidpoint(midpoint);
-	}
+	};
 
 	useEffect(() => {
 		fetchTrendingEpisodes();
-	})
+	});
 
 	return (
 		<Container>
@@ -159,7 +159,7 @@ const MyTopics = () => {;
 				))}
 			</Column>
 		</Container>
-	)
+	);
 }
 
 export default MyTopics;
