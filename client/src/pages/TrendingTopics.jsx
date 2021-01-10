@@ -121,7 +121,6 @@ const TrendingTopics = () => {;
 	const fetchTrendingEpisodes = async () => {
 		const data = await get("topics/trending");
 		setTrendingTopics(data);
-		console.log(data);
 		const midpoint = Math.ceil(topics.length / 2);
 		setMidpoint(midpoint);
 	}

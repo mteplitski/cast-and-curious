@@ -93,11 +93,9 @@ const Episode = () => {
 	const [episode, setEpisode] = useState();
 
 	const EPISODE_INSTANCE_URL = `episodes/${id}`;
-	console.log(EPISODE_INSTANCE_URL);
 
 	const fetchEpisode = async () => {
 		const data = await get(EPISODE_INSTANCE_URL);
-		console.log(data);
 		setEpisode(data);
 	}
 

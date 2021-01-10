@@ -15,8 +15,6 @@ export const getTrendingTopicEpisodes = (topics) => {
 		return [];
 	}
 
-	console.log(topics);
-
 	let trendingTopicEpisodes = [];
 	for(let i = 1; i < 7; i++){
 		const topic_index = i % topics.length;
@@ -24,12 +22,9 @@ export const getTrendingTopicEpisodes = (topics) => {
 		const topic = topics[topic_index]
 		const { episodes, name } = topic;
 		const episodeData = episodes[episode_index];
-		console.log(episodeData);
 		const episode = { ...episodeData, topic: name };
 		trendingTopicEpisodes.push(episode);
 	}
-
-	console.log(trendingTopicEpisodes);
 
 	return trendingTopicEpisodes;
 }

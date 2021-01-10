@@ -87,7 +87,7 @@ const CustomCast = () => {
     if(e.charCode === 13){
       setShowResults(true);
     }
-  }
+  };
 
   return (
     <Container>

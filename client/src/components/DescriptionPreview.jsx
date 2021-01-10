@@ -22,7 +22,7 @@ export const DescriptionPreview = ({ description, maxChars, hideButton }) => {
 					</Button>
 				)}
 			</>
-    )
+    );
 }
 
 export default DescriptionPreview;

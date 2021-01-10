@@ -4,12 +4,12 @@ import {
 	IconButton,
 	Typography
 } from "@material-ui/core";
-import StarIcon from "@material-ui/icons/Star"
+import StarIcon from "@material-ui/icons/Star";
 
 const Container = styled.div`
 	display: flex;
 	justify-content: space-between;
-`
+`;
 
 const StarRating = () => {
 	return (
@@ -23,7 +23,7 @@ const StarRating = () => {
 				<IconButton><StarIcon/></IconButton>
 			</Container>
 		</>
-	)
-}
+	);
+};
 
 export default StarRating;

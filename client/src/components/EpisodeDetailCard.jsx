@@ -28,7 +28,7 @@ const EpisodeDetailCard = ({ episode, topics }) => {
 		duration_ms,
 	} = episode;
 
-	const [elevation, setElevation] = useState(1)
+	const [elevation, setElevation] = useState(1);
 
 	return (
 		<Link
@@ -70,7 +70,7 @@ const EpisodeDetailCard = ({ episode, topics }) => {
 				</CardContent>
 			</Card>
 		</Link>
-	)
-}
+	);
+};
 
 export default EpisodeDetailCard;

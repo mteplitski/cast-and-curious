@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import {
   Button,
-  Menu,
-  MenuItem,
   Paper,
   ButtonGroup
 } from "@material-ui/core"
@@ -43,32 +41,6 @@ const Header = () => {
         <Image src={Logo} alt="Cast and Curious"/>
       </Link>
       <div>
-        {/* <Button
-          color="primary"
-          variant="contained"
-          aria-controls="header-menu"
-          aria-haspopup="true"
-          onClick={handleClick}
-        >
-          Explore
-        </Button> */}
-        {/* <Menu
-          id="header-menu"
-          anchorEl={menuEl}
-          keepMounted
-          open={Boolean(menuEl)}
-          onClose={handleClose}
-        >
-          <Link to={"/trendingTopics"}>
-            <MenuItem>Trending Topics</MenuItem>
-          </Link>
-          <Link to={"/myTopics"}>
-            <MenuItem>My Topics</MenuItem>
-          </Link>
-          <Link to={"/customCast"}>
-            <MenuItem>Custom Cast</MenuItem>
-          </Link>
-        </Menu> */}
         <ButtonGroup color="primary" variant="contained" style={{backgroundColor: "#22B8D8"}}>
           <Link to={"/trendingTopics"}>
             <Button>Trending Topics</Button>

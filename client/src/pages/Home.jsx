@@ -101,11 +101,13 @@ const MOCK_EPISODES = [
 ]
 
 const Home = () => {
-	// const token_info = window.location.href.split('access_token=')[1]; // token info from URL params
-	// const token = token_info.split('&token_type=')[0] // token
-	// console.log(token);
 	const [trendingEpisodes, setTrendingEpisodes] = useState([]);
 	const [trendingTopics, setTrendingTopics] = useState([]);
+
+	useEffect(() => {
+		fetchTrendingEpisodes();
+		fetchTrendingTopics();
+	}, []);
 
 	const fetchTrendingEpisodes = async () => {
 		const data = await get("topics/favourites");
@@ -118,11 +120,6 @@ const Home = () => {
 		const trendingTopicEpisodes = getTrendingTopicEpisodes(data);
 		setTrendingTopics(trendingTopicEpisodes);
 	};
-
-	useEffect(() => {
-		fetchTrendingEpisodes();
-		fetchTrendingTopics();
-	}, [])
 
 	if(!trendingEpisodes || !trendingTopics){
 		return (<Container>
@@ -146,4 +143,4 @@ const Home = () => {
 	);
 }
 
-export default Home
+export default Home;

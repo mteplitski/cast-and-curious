@@ -114,14 +114,12 @@ const TopicContainer = styled.div`
 `;
 
 const MyTopics = () => {;
-	// const topics = MOCK_TOPICS;
 	const [midpoint, setMidpoint] = useState();
 	const [topics, setTopics] = useState([]);
 
 	const fetchTrendingEpisodes = async () => {
 		const data = await get("topics/favourites");
 		setTopics(data);
-		console.log(data);
 		const midpoint = Math.ceil(topics.length / 2);
 		setMidpoint(midpoint);
 	};

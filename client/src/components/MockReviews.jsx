@@ -44,7 +44,7 @@ const MockReviews = () => {
 				</Typography>
 			</Container>
 		</>
-	)
-}
+	);
+};
 
 export default MockReviews;

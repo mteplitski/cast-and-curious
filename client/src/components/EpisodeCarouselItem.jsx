@@ -19,7 +19,7 @@ const EpisodeCard = ({ episode, index }) => {
 		id
 	} = episode;
 
-	const [elevation, setElevation] = useState(1)
+	const [elevation, setElevation] = useState(1);
 
 	if(!episode){
 		return <CircularProgress/>;
@@ -51,7 +51,6 @@ const EpisodeCard = ({ episode, index }) => {
 							objectFit: "contain",
 						}}
 					/>
-					{/* <CardMedia image={show.image_url} style={{height: "80px", width: "auto"}}/> */}
 					<CardContent style={{textAlign: "left"}}>
 						<Typography variant="body1" noWrap><b>{name}</b></Typography>
 						<TopicChips topics={[topic]} align="left" index={index}/>
@@ -59,7 +58,7 @@ const EpisodeCard = ({ episode, index }) => {
 					</CardContent>
 				</Link>
 			</Card>
-	)
-}
+	);
+};
 
-export default EpisodeCard
+export default EpisodeCard;
