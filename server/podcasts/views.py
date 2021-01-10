@@ -2,7 +2,6 @@ from rest_framework import mixins, viewsets
 
 from .models import Episode
 from .serializers import EpisodeSerializer
-from .services import get_trending_episodes
 
 
 class EpisodeViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):

@@ -13,43 +13,38 @@ const Container = styled(Paper)`
   position: sticky;
   top: 0;
   z-index: 10;
-  // border-bottom: 1px solid black;
   justify-content: space-between;
-  height: 90px;
+  height: 80px;
   align-items: center;
   padding: 0px 24px;
 `
 
+const NavButton = styled(Button)`
+  padding: 8px 24px !important;
+`
+
 const Image = styled.img`
-  height: 90px;
+  height: 60px;
 `
 
 const Header = () => {
   const [menuEl, setMenuEl] = React.useState(null);
 
-  const handleClick = (event) => {
-    setMenuEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setMenuEl(null);
-  };
-
   return(
-    <Container elevation={4}>
+    <Container elevation={3}>
       <Link to="/">
         <Image src={Logo} alt="Cast and Curious"/>
       </Link>
       <div>
-        <ButtonGroup color="primary" variant="contained" style={{backgroundColor: "#22B8D8"}}>
+        <ButtonGroup color="primary" variant="text" style={{backgroundColor: "#22B8D8"}} disableElevation>
           <Link to={"/trendingTopics"}>
-            <Button>Trending Topics</Button>
+            <NavButton>Trending Topics</NavButton>
           </Link>
           <Link to={"/myTopics"}>
-            <Button>My Topics</Button>
+            <NavButton>My Topics</NavButton>
           </Link>
           <Link to={"/customCast"}>
-            <Button>Custom Cast</Button>
+            <NavButton>Custom Cast</NavButton>
           </Link>
         </ButtonGroup>
       </div>

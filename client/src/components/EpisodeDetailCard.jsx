@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import {
 	Typography,
 	Card,
-	CardMedia,
 	CardContent,
+	CardMedia,
 } from "@material-ui/core";
 import styled from "styled-components";
 import TopicChips from "../components/TopicChips";
@@ -16,7 +16,6 @@ const DetailsContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 `
-
 
 const EpisodeDetailCard = ({ episode, topics }) => {
 	const {
@@ -38,35 +37,29 @@ const EpisodeDetailCard = ({ episode, topics }) => {
 		>
 			<Card
 				style={{
-					padding: "24px",
-					width: "90%",
-					paddingBottom: "8px",
-					display: "flex"
+					display: "flex",
+					marginTop: 16,
+					height: 200
 				}}
 				elevation={elevation}
 			>
-				<img
-					src={show.image_url}
+				<CardMedia
+					image={show.image_url}
 					style={{
-						height: "auto",
-						width: "20%",
-						objectFit: "contain"
-					}}>
-				</img>
-				<CardContent style={{width: "80%"}}>
-					<Typography variant="h4" align="left" noWrap>{name}</Typography>
-						<Spacer height={12}/>
-						{topics && <TopicChips topics={topics}/>}
-						<Spacer height={12}/>
-						<Typography variant="h5" align="left">{show.name}</Typography>
-						<Spacer height={12}/>
-						<DetailsContainer>
-							<Typography variant="body1" align="left">By: {show.publisher}</Typography>
-							<Typography variant="body1" align="left">{formatDate(release_date)}</Typography>
-							<Typography variant="body1" align="left">{formatDuration(duration_ms)}</Typography>
-						</DetailsContainer>
-						<Spacer height={24}/>
-					<Description description={description} maxChars={300} hideButton/>
+						height: 200,
+						width: 200,
+					}}
+				/>
+				<CardContent style={{display: "flex", flexDirection: "column", flex: "1", margin: "0 16px"}}>
+					<Typography variant="h6" align="left" noWrap>{name.length > 60 ? name.slice(0, 60) + '...' : name}</Typography>
+					<Typography variant="subtitle1" align="left">{show.name}</Typography>
+					<DetailsContainer>
+						<Typography variant="body2" align="left">{show.publisher}</Typography>
+						<Typography variant="body2" align="left">{formatDate(release_date)}</Typography>
+						<Typography variant="body2" align="left">{formatDuration(duration_ms)}</Typography>
+					</DetailsContainer>
+					<Spacer height={16}/>
+					<Description description={description} maxChars={240} hideButton/>
 				</CardContent>
 			</Card>
 		</Link>

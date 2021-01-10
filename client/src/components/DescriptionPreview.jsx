@@ -10,7 +10,7 @@ export const DescriptionPreview = ({ description, maxChars, hideButton }) => {
 
     return (
 			<>
-				<Typography variant="body1" align="left">{showMore ? description : descriptionPreview}</Typography>
+				<Typography variant="body2" align="left">{showMore ? description : descriptionPreview}</Typography>
 				{!hideButton && description.length > maxChars && (
 					<Button
 						variant="contained"

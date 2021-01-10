@@ -10,13 +10,13 @@ export const formatDuration = (time) => time ? `${Math.ceil(time/(1000*60))} min
 
 export const formatDate = (date) => date ? date.slice(0, 10) : "";
 
-export const getTrendingTopicEpisodes = (topics) => {
+export const getEpisodes = (topics) => {
 	if(!topics){
 		return [];
 	}
 
 	let trendingTopicEpisodes = [];
-	for(let i = 1; i < 7; i++){
+	for(let i = 1; i < 9; i++){
 		const topic_index = i % topics.length;
 		const episode_index = Math.ceil(i/topics.length) - 1;
 		const topic = topics[topic_index]

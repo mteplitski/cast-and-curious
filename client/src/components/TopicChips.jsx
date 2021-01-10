@@ -18,19 +18,26 @@ const TopicChips = ({ topics, align, index }) => {
 				const colorIndex = index ? index : i;
 
 				let color;
-				if(colorIndex % 3 === 0){
+				if (colorIndex % 4 === 0) {
 					color = palette.primary.main;
-				} else if(colorIndex % 3 === 1){
+				} else if (colorIndex % 4 === 1) {
 					color = palette.secondary.main;
-				} else{
+				} else if (colorIndex % 4 === 2) {
 					color = palette.error.main;
+				} else {
+					color = "#888";
 				}
 
 				return (
 					<Chip
 						key={topic}
 						label={topic}
-						style={{marginRight: "8px", backgroundColor: color, color: "white"}}
+						style={{
+							marginRight: "8px",
+							backgroundColor: color,
+							color: "white",
+							height: "24px",
+						}}
 					/>
 				);
 			})}

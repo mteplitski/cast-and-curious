@@ -5,8 +5,11 @@ import Spacer from "../components/Spacer";
 import EpisodeDetailCard from "../components/EpisodeDetailCard";
 
 const Container = styled.div`
-  padding: 24px;
-`
+	padding: 60px;
+	max-width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+`;
 
 const InputContainer = styled(Paper)`
   width: 70%;
@@ -42,12 +45,12 @@ const EPISODES = [
   {
     "id": 1,
     "name": "Managing Circular Supply Chains with Adrian Segens",
-    "description": "Bananas, potatoes, and tomatoes",
+    "description": "Today I’m talking with Adrien Segens about supply chain management and managing material risks. In this episode you will hear why having a better understanding of where our products come from and where they end up can help us create a more circular economy. We talk about different ways technology can play in enabling supply...",
     "spotify_url": "https://open.spotify.com/episode/5X6VkCuRLKl2hhLhbgFCoL?si=p1fHtpE4Tru0zXOZ_P-o9w",
     "release_date": "2021-01-09T08:09:55Z",
     "duration_ms": 60000,
     "show": {
-        "name": "Today I’m talking with Adrien Segens about supply chain management and managing material risks. In this episode you will hear why having a better understanding of where our products come from and where they end up can help us create a more circular economy. We talk about different ways technology can play in enabling supply...",
+        "name": "Bananas, potatoes, and tomatoes",
         "publisher": "Katherine Whalen",
         "image_url": "https://i.picsum.photos/id/479/200/200.jpg?hmac=VH6eGzugyQKHVUXvN1fcPAfAN5PbTkE8Tf22vb6JuG8"
     },
@@ -91,7 +94,7 @@ const CustomCast = () => {
 
   return (
     <Container>
-        <Typography variant="h2">Custom Cast</Typography>
+        <Typography variant="h4">Custom Cast</Typography>
         <Spacer height={24}/>
         {showResults ?
           <>
@@ -109,7 +112,7 @@ const CustomCast = () => {
           <>
             <Typography variant="p">Cast your net and fish for content based on articles of your choice.  </Typography><br></br>
             <Typography variant="p">Search for podcast deep dives based on articles of interest. </Typography>
-            <Spacer height={12}/>
+            <Spacer height={40}/>
             <InputContainer elevation={4}>
               <TextField
                 label="Article URL"
@@ -122,7 +125,7 @@ const CustomCast = () => {
               <Typography variant="p">OR</Typography>
               <Spacer height={12}/>
               <FileUploadMock>
-                <Typography variant="p">Upload a file from your computer.</Typography>
+                <Typography variant="p">Upload a file from your computer</Typography>
               </FileUploadMock>
             </InputContainer>
           </>

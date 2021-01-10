@@ -11,7 +11,6 @@ class TopicSerializer(serializers.ModelSerializer):
         model = Topic
         fields = ['name', 'colour', 'episodes', ]
 
-
     def get_episodes(self, obj):
         episodes = obj.episodes.filter(active=True)
         return EpisodeListSerializer(

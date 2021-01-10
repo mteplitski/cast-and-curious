@@ -7,122 +7,23 @@ import Spacer from "../components/Spacer";
 import EpisodeDetailCard from "../components/EpisodeDetailCard";
 import { get } from "../utils/utils";
 
-const MOCK_TOPICS = [
-	{
-		"name": "sustainability",
-		"episodes": [
-				{
-					"id": 1,
-					"name": "Episode 1: Bananas",
-					"description": "Bananas, potatoes, and tomatoes",
-					"spotify_url": "https://open.spotify.com/track/4t9cpYT8AD3G2TGwSRQVDK?si=O6PMpFCSQ7y10gqhkPH1ow",
-					"release_date": "2021-01-09T08:09:55Z",
-					"duration_ms": 60000,
-					"show": {
-							"name": "Minion Madness",
-							"publisher": "Brittany",
-							"image_url": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png"
-					},
-				},
-				{
-					"id": 1,
-					"name": "Episode 1: Bananas",
-					"description": "Bananas, potatoes, and tomatoes",
-					"spotify_url": "https://open.spotify.com/track/4t9cpYT8AD3G2TGwSRQVDK?si=O6PMpFCSQ7y10gqhkPH1ow",
-					"release_date": "2021-01-09T08:09:55Z",
-					"duration_ms": 60000,
-					"show": {
-							"name": "Minion Madness",
-							"publisher": "Brittany",
-							"image_url": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png"
-					},
-				},
-				{
-					"id": 1,
-					"name": "Episode 1: Bananas",
-					"description": "Bananas, potatoes, and tomatoes",
-					"spotify_url": "https://open.spotify.com/track/4t9cpYT8AD3G2TGwSRQVDK?si=O6PMpFCSQ7y10gqhkPH1ow",
-					"release_date": "2021-01-09T08:09:55Z",
-					"duration_ms": 60000,
-					"show": {
-							"name": "Minion Madness",
-							"publisher": "Brittany",
-							"image_url": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png"
-					},
-				}
-			]
-	},
-	{
-		"name": "sustainability",
-		"episodes": [
-				{
-					"id": 1,
-					"name": "Episode 1: Bananas",
-					"description": "Bananas, potatoes, and tomatoes",
-					"spotify_url": "https://open.spotify.com/track/4t9cpYT8AD3G2TGwSRQVDK?si=O6PMpFCSQ7y10gqhkPH1ow",
-					"release_date": "2021-01-09T08:09:55Z",
-					"duration_ms": 60000,
-					"show": {
-							"name": "Minion Madness",
-							"publisher": "Brittany",
-							"image_url": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png"
-					},
-				},
-				{
-					"id": 1,
-					"name": "Episode 1: Bananas",
-					"description": "Bananas, potatoes, and tomatoes",
-					"spotify_url": "https://open.spotify.com/track/4t9cpYT8AD3G2TGwSRQVDK?si=O6PMpFCSQ7y10gqhkPH1ow",
-					"release_date": "2021-01-09T08:09:55Z",
-					"duration_ms": 60000,
-					"show": {
-							"name": "Minion Madness",
-							"publisher": "Brittany",
-							"image_url": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png"
-					},
-				},
-				{
-					"id": 1,
-					"name": "Episode 1: Bananas",
-					"description": "Bananas, potatoes, and tomatoes",
-					"spotify_url": "https://open.spotify.com/track/4t9cpYT8AD3G2TGwSRQVDK?si=O6PMpFCSQ7y10gqhkPH1ow",
-					"release_date": "2021-01-09T08:09:55Z",
-					"duration_ms": 60000,
-					"show": {
-							"name": "Minion Madness",
-							"publisher": "Brittany",
-							"image_url": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png"
-					},
-				}
-			]
-	},
-];
-
 const Container = styled.div`
-	display: flex;
-	padding: 48px;
-	justify-content: space-between;
+	padding: 60px;
+	max-width: 960px;
+	margin-left: auto;
+	margin-right: auto;
 `;
-
-const Column = styled.div`
-	width: 50%;
-	margin-right: 12px;
-`
 
 const TopicContainer = styled.div`
 	margin-bottom: 24px;
 `;
 
 const TrendingTopics = () => {;
-	const topics = MOCK_TOPICS;
-	const [midpoint, setMidpoint] = useState();
-	const [trendingTopics, setTrendingTopics] = useState([]);
+	const [topics, setTopics] = useState([]);
 
 	const fetchTrendingEpisodes = async () => {
 		const data = await get("topics/trending");
-		setTrendingTopics(data);
-		const midpoint = Math.ceil(topics.length / 2);
-		setMidpoint(midpoint);
+		setTopics(data);
 	}
 
 	useEffect(() => {
@@ -131,32 +32,18 @@ const TrendingTopics = () => {;
 
 	return (
 		<Container>
-			<Column>
-				{trendingTopics.slice(0, midpoint).map((topic) => (
-					<TopicContainer>
-						<Typography variant="h4" align="left">{topic.name}</Typography>
-						{topic.episodes.map((episode) => (
-							<>
-								<EpisodeDetailCard episode={episode}/>
-								<Spacer height={12}/>
-							</>
-						))}
-					</TopicContainer>
-				))}
-			</Column>
-			<Column>
-				{trendingTopics.slice(midpoint).map((topic) => (
-					<TopicContainer>
-						<Typography variant="h4" align="left">{topic.name}</Typography>
-						{topic.episodes.map((episode) => (
-							<>
-								<EpisodeDetailCard episode={episode}/>
-								<Spacer height={12}/>
-							</>
-						))}
-					</TopicContainer>
-				))}
-			</Column>
+			<Typography variant="h4" align="left">Trending in the news</Typography>
+			{topics.map((topic) => (
+				<TopicContainer>
+					<Spacer height={32}/>
+					<Typography variant="h5" align="left">{topic.name}</Typography>
+					{topic.episodes.map((episode) => (
+						<>
+							<EpisodeDetailCard episode={episode}/>
+						</>
+					))}
+				</TopicContainer>
+			))}
 		</Container>
 	)
 }

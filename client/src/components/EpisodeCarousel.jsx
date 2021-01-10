@@ -1,30 +1,23 @@
 import React from "react";
 import EpisodeCarouselItem from "./EpisodeCarouselItem";
 import {
-	Collapse,
 	GridList,
 	GridListTile,
-	Typography
 } from "@material-ui/core";
-import styled from "styled-components";
 import { makeStyles } from '@material-ui/core/styles';
-import Spacer from "../components/Spacer";
 
 const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
       flexWrap: 'wrap',
       justifyContent: 'space-around',
-      overflow: 'hidden',
-          backgroundColor: theme.palette.background.paper,
-          width: "100%",
-          height: "100%"
+      backgroundColor: theme.palette.background.paper,
+      marginTop: 16,
+      marginBottom: 32
     },
     gridList: {
       flexWrap: 'nowrap',
           transform: 'translateZ(0)',
-          height: "100%",
-          width: "100%"
       },
   }));
 
