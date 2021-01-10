@@ -113,14 +113,14 @@ const TopicContainer = styled.div`
 	margin-bottom: 24px;
 `;
 
-const MyTopics = () => {;
-	// const topics = MOCK_TOPICS;
+const TrendingTopics = () => {;
+	const topics = MOCK_TOPICS;
 	const [midpoint, setMidpoint] = useState();
-	const [topics, setTopics] = useState([]);
+	const [trendingTopics, setTrendingTopics] = useState([]);
 
 	const fetchTrendingEpisodes = async () => {
-		const data = await get("topics/favourites");
-		setTopics(data);
+		const data = await get("topics/trending");
+		setTrendingTopics(data);
 		console.log(data);
 		const midpoint = Math.ceil(topics.length / 2);
 		setMidpoint(midpoint);
@@ -133,7 +133,7 @@ const MyTopics = () => {;
 	return (
 		<Container>
 			<Column>
-				{topics.slice(0, midpoint).map((topic) => (
+				{trendingTopics.slice(0, midpoint).map((topic) => (
 					<TopicContainer>
 						<Typography variant="h4" align="left">{topic.name}</Typography>
 						{topic.episodes.map((episode) => (
@@ -146,7 +146,7 @@ const MyTopics = () => {;
 				))}
 			</Column>
 			<Column>
-				{topics.slice(midpoint).map((topic) => (
+				{trendingTopics.slice(midpoint).map((topic) => (
 					<TopicContainer>
 						<Typography variant="h4" align="left">{topic.name}</Typography>
 						{topic.episodes.map((episode) => (
@@ -162,4 +162,4 @@ const MyTopics = () => {;
 	)
 }
 
-export default MyTopics;
+export default TrendingTopics;

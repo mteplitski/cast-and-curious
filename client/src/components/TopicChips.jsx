@@ -9,16 +9,18 @@ const Container = styled.div`
 	flex-wrap: wrap;
 `
 
-const TopicChips = ({ topics, align }) => {
+const TopicChips = ({ topics, align, index }) => {
 	const { palette } = useTheme();
 	const justifyContent = align == "center" ? "center" : "flex-start"
 	return (
 		<Container style={{justifyContent}}>
-			{topics.map((topic, index) => {
+			{topics.map((topic, i) => {
+				const colorIndex = index ? index : i;
+
 				let color;
-				if(index % 3 == 0){
+				if(colorIndex % 3 == 0){
 					color = palette.primary.main;
-				} else if(index % 3 == 1){
+				} else if(colorIndex % 3 == 1){
 					color = palette.secondary.main;
 				} else{
 					color = palette.error.main;

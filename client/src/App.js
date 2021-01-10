@@ -3,6 +3,7 @@ import Header from './pages/Header';
 import Home from './pages/Home';
 // import LoggedOut from './pages/LoggedOut';
 import MyTopics from './pages/MyTopics';
+import TrendingTopics from './pages/TrendingTopics';
 import CustomCast from './pages/CustomCast';
 import Episode from './pages/Episode';
 import {
@@ -13,6 +14,7 @@ import {
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import 'fontsource-roboto';
+// import DataProvider from "./contexts/DataContext";s
 
 const theme = createMuiTheme({
   palette: {
@@ -41,6 +43,9 @@ function App() {
           <Switch>
             <Route path="/myTopics">
               <MyTopics />
+            </Route>
+            <Route path="/trendingTopics">
+              <TrendingTopics />
             </Route>
             <Route path="/customCast">
               <CustomCast />

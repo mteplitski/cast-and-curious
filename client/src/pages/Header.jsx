@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Button, Menu, MenuItem, Paper } from "@material-ui/core"
+import {
+  Button,
+  Menu,
+  MenuItem,
+  Paper,
+  ButtonGroup
+} from "@material-ui/core"
 import { Link } from "react-router-dom";
 import { default as Logo } from "../assets/cac.png";
 
@@ -37,7 +43,7 @@ const Header = () => {
         <Image src={Logo} alt="Cast and Curious"/>
       </Link>
       <div>
-        <Button
+        {/* <Button
           color="primary"
           variant="contained"
           aria-controls="header-menu"
@@ -45,21 +51,35 @@ const Header = () => {
           onClick={handleClick}
         >
           Explore
-        </Button>
-        <Menu
+        </Button> */}
+        {/* <Menu
           id="header-menu"
           anchorEl={menuEl}
           keepMounted
           open={Boolean(menuEl)}
           onClose={handleClose}
         >
+          <Link to={"/trendingTopics"}>
+            <MenuItem>Trending Topics</MenuItem>
+          </Link>
           <Link to={"/myTopics"}>
             <MenuItem>My Topics</MenuItem>
           </Link>
           <Link to={"/customCast"}>
             <MenuItem>Custom Cast</MenuItem>
           </Link>
-        </Menu>
+        </Menu> */}
+        <ButtonGroup color="primary" variant="contained" style={{backgroundColor: "#22B8D8"}}>
+          <Link to={"/trendingTopics"}>
+            <Button>Trending Topics</Button>
+          </Link>
+          <Link to={"/myTopics"}>
+            <Button>My Topics</Button>
+          </Link>
+          <Link to={"/customCast"}>
+            <Button>Custom Cast</Button>
+          </Link>
+        </ButtonGroup>
       </div>
     </Container>
   );

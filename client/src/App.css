@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100%;
 }
 
 .App-logo {
@@ -48,4 +49,12 @@ a {
 
 .MuiCardContent-root:last-child {
   padding-bottom: 8px !important;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+#root {
+  height: 100%;
 }

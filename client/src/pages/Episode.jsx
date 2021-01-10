@@ -1,14 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
 	Typography,
 	Link,
 	Card,
-	CardMedia,
 	CardContent,
 	TextField,
 	Button,
-	Chip
 } from "@material-ui/core";
 import { get, formatDuration, formatDate } from "../utils/utils";
 import styled from "styled-components";
@@ -16,11 +14,15 @@ import Spacer from "../components/Spacer";
 import { default as SpotifyLogo } from "../assets/spotify_logo.png";
 import StarRating from "../components/StarRating";
 import TopicChips from "../components/TopicChips";
+import MockReviews from "../components/MockReviews"
+import DescriptionPreview from "../components/DescriptionPreview";
+
+const DESCRIPTION_PREVIEW_LENGTH = 300;
 
 const MOCK_EPISODE = {
 	"id": 1,
-	"name": "Episode 1: Bananas",
-	"description": "Bananas, potatoes, and tomatoes",
+	"name": "Episode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: BananasEpisode 1: Bananas",
+	"description": "Bananas, potatoes, and tomatoesBananas, potatoes, and tomatoesBananas, potatoes, and tomatoesBananas, potatoes, and tomatoesBananas, potatoes, and tomatoesBananas, potatoes, and tomatoesBananas, potatoes, and tomatoesBananas, potatoes, and tomatoesBananas, potatoes, and tomatoesBananas, potatoes, and tomatoesBananas, potatoes, and tomatoesBananas, potatoes, and tomatoesBananas, potatoes, and tomatoesBananas, potatoes, and tomatoesBananas, potatoes, and tomatoes",
 	"spotify_url": "https://open.spotify.com/track/4t9cpYT8AD3G2TGwSRQVDK?si=O6PMpFCSQ7y10gqhkPH1ow",
 	"release_date": "2021-01-09T08:09:55Z",
 	"duration_ms": 60000,
@@ -86,25 +88,42 @@ const Episode = () => {
 		release_date,
 		duration_ms,
 		show,
-		review,
 		topics
 	} = MOCK_EPISODE;
+	const [episode, setEpisode] = useState();
 
 	const EPISODE_INSTANCE_URL = `episodes/${id}`;
 	console.log(EPISODE_INSTANCE_URL);
 
+	const fetchEpisode = async () => {
+		const data = await get(EPISODE_INSTANCE_URL);
+		console.log(data);
+		setEpisode(data);
+	}
+
 	// get info about the episode
 	useEffect(() => {
-		get(EPISODE_INSTANCE_URL);
+		fetchEpisode();
 	}, [EPISODE_INSTANCE_URL]);
+
+	if(!episode){
+		return null;
+	}
 
 	return (
 		<Container>
 			<LeftContent>
-				<Card style={{padding: "8px"}}>
-					<CardMedia image={show.image_url} style={{height: "100px", width: "auto"}}/>
+				<Card style={{padding: "12px"}}>
+					<img
+						src={episode.show.image_url}
+						style={{
+							height: "auto",
+							width: "80%",
+							objectFit: "contain"
+						}}>
+					</img>
 					<CardContent>
-						<Link target="_blank" href={spotify_url}>
+						<Link target="_blank" href={episode.spotify_url}>
 							<ListenOnSpotify>
 								<Typography variant="p" color="textSecondary">Listen on</Typography>
 								<img src={SpotifyLogo} style={{height: "70%"}}/>
@@ -131,24 +150,31 @@ const Episode = () => {
 						>
 							Submit
 						</Button>
+						<Spacer height={24}/>
 					</CardContent>
 				</Card>
 			</LeftContent>
 			<RightContent>
-				<Card style={{padding: "48px"}}>
-					<Typography variant="h4" align="left">{name}</Typography>
+				<Card style={{padding: "48px", paddingBottom: "12px"}}>
+					<Typography variant="h4" align="left" noWrap>{episode.name}</Typography>
 						<Spacer height={12}/>
-						<TopicChips topics={topics}/>
+						<TopicChips topics={episode.topics}/>
 						<Spacer height={12}/>
-						<Typography variant="h5" align="left">{show.name}</Typography>
+						<Typography variant="h5" align="left">{episode.show.name}</Typography>
 						<Spacer height={12}/>
 						<DetailsContainer>
-							<Typography variant="body1" align="left">By: {show.publisher}</Typography>
-							<Typography variant="body1" align="left">{formatDate(release_date)}</Typography>
-							<Typography variant="body1" align="left">{formatDuration(duration_ms)}</Typography>
+							<Typography variant="body1" align="left">By: {episode.show.publisher}</Typography>
+							<Typography variant="body1" align="left">{formatDate(episode.release_date)}</Typography>
+							<Typography variant="body1" align="left">{formatDuration(episode.duration_ms)}</Typography>
 						</DetailsContainer>
-						<Spacer height={24}/>
-					<Typography variant="body1" align="left">{description}</Typography>
+					<DescriptionPreview description={episode.description} maxChars={DESCRIPTION_PREVIEW_LENGTH}/>
+				</Card>
+				<Spacer height={24}/>
+				<Card style={{
+					padding: "48px",
+				}}>
+					<Typography variant="h4" align="left">Community Reviews</Typography>
+					<MockReviews/>
 				</Card>
 			</RightContent>
 		</Container>
