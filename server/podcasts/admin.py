@@ -9,7 +9,7 @@ class ShowAdmin(admin.ModelAdmin):
 
 
 class EpisodeAdmin(admin.ModelAdmin):
-    search_fields = ('id', 'name', 'show', )
+    search_fields = ('id', 'name', 'show__name', )
     list_display = ('name', 'show', 'active', )
     readonly_fields = ('id',)
 

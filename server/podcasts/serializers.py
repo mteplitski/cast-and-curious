@@ -46,23 +46,3 @@ class EpisodeSerializer(serializers.ModelSerializer):
 
     def get_topics(self, obj):
         return [topic.name for topic in obj.topics.all()]
-
-
-class EpisodePreviewSerializer(serializers.ModelSerializer):
-    show = ShowSerializer()
-    topic = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Episode
-        fields = [
-            'id',
-            'name',
-            'description',
-            'show',
-            'topic',
-        ]
-
-    def get_topic(self, obj):
-        if obj.topics:
-            return obj.topics.first().name
-        return None
