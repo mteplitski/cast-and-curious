@@ -26,34 +26,35 @@ const EpisodeCard = ({ episode, index }) => {
 		return <CircularProgress/>;
 	}
 
-	const descriptionPreview = description && description.length > 88 ? `${description.slice(0, 88)}...` : description;
+	const descriptionPreview = description && description.length > 104 ? `${description.slice(0, 104)}...` : description;
 
 	return (
 			<Card
 				style={{
-					height: 480,
-					width: 280,
+					height: 440,
+					width: 240,
 					margin: 32,
 					marginTop: 16,
+					marginLeft: 16,
 					border: "1px solid rgba(0, 0, 0, 5%)",
 				}}
 				elevation={elevation}
 			>
 				<Link
 					to={`episode/${id}`}
-					onMouseEnter={() => setElevation(10)}
+					onMouseEnter={() => setElevation(8)}
 					onMouseLeave={() => setElevation(1)}
 				>
 					<CardMedia
 						image={show.image_url}
-						style={{ height: 280 }}
+						style={{ height: 240 }}
 					/>
 					<CardContent style={{ textAlign: "left", padding: 16 }}>
-						<Typography variant="body1"><b>{name.length > 48 ? name.slice(0, 48) + '...' : name}</b></Typography>
+						<Typography variant="body1"><b>{name.length > 44 ? name.slice(0, 44) + '...' : name}</b></Typography>
 						<Spacer height={8}/>
 						<TopicChips topics={[topic]} align="left" index={index}/>
 						<Spacer height={8}/>
-						<Typography variant="body1">{descriptionPreview}</Typography>
+						<Typography variant="body2">{descriptionPreview}</Typography>
 					</CardContent>
 				</Link>
 			</Card>

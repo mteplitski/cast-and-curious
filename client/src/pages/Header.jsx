@@ -14,17 +14,17 @@ const Container = styled(Paper)`
   top: 0;
   z-index: 10;
   justify-content: space-between;
-  height: 80px;
+  height: 64px;
   align-items: center;
   padding: 0px 24px;
 `
 
 const NavButton = styled(Button)`
-  padding: 8px 24px !important;
+  padding: 8px 16px !important;
 `
 
 const Image = styled.img`
-  height: 60px;
+  height: 56px;
 `
 
 const Header = () => {

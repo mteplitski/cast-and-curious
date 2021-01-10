@@ -32,7 +32,7 @@ const EpisodeDetailCard = ({ episode, topics }) => {
 	return (
 		<Link
 			to={`episode/${id}`}
-			onMouseEnter={() => setElevation(10)}
+			onMouseEnter={() => setElevation(8)}
 			onMouseLeave={() => setElevation(1)}
 		>
 			<Card
@@ -59,7 +59,7 @@ const EpisodeDetailCard = ({ episode, topics }) => {
 						<Typography variant="body2" align="left">{formatDuration(duration_ms)}</Typography>
 					</DetailsContainer>
 					<Spacer height={16}/>
-					<Description description={description} maxChars={240} hideButton/>
+					<Description description={description} maxChars={304} hideButton/>
 				</CardContent>
 			</Card>
 		</Link>
