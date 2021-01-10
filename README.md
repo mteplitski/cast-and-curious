@@ -1,5 +1,7 @@
 # Cast and Curious
 
+Our SheHacks V submission! [Check it out](https://cast-and-curious.herokuapp.com/)
+
 ## About the project
 
 Cast and Curious is a tool providing curated podcast recommendations for eager listeners.
